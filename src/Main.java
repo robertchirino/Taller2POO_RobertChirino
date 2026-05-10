@@ -185,16 +185,14 @@ public class Main {
         if (jugadorActual == null || jugadorActual.isEmpty()) return;
         
         try (java.io.BufferedWriter bw = new java.io.BufferedWriter(new java.io.FileWriter("Registros.txt"))) {
-            // Contamos las medallas revisando qué gimnasios están 'Derrotados'
+           
             int medallas = 0;
             for(Gimnasio g : listaGimnasios) {
                 if(g.getEstado().equalsIgnoreCase("Derrotado")) medallas++;
             }
             
-            // Primera línea: nombreCuenta;medallas
             bw.write(jugadorActual + ";" + medallas + "\n");
             
-            // Siguientes líneas: pokemon;Estado
             for (Pokemon p : pokemonsActuales) {
                 bw.write(p.getNombre() + ";" + p.getEstado() + "\n");
             }
@@ -275,12 +273,10 @@ public class Main {
                     accesoPC();
                     break;
                 case 4:
-                    System.out.println("Retando gimnasio..."); 
-                    //falta logica de batalla
+                    retarGimnasio();
                     break;
                 case 5:
-                    System.out.println("Desafiando Alto Mando..."); 
-                    //falta logica de batalla
+                    desafioAltoMando();
                     break;
                 case 6:
                     curarPokemon();
